@@ -51,7 +51,6 @@ MainFrame.Parent = ScreenGui
 MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 MainFrame.Position = UDim2.new(0.392653048, 0, 0.338271618, 0)
 MainFrame.Size = UDim2.new(0, 304, 0, 262)
-MainFrame.Visible = false
 
 UICorner.Parent = MainFrame
 
@@ -128,7 +127,7 @@ Displayname.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Displayname.BackgroundTransparency = 1.000
 Displayname.BorderSizePixel = 0
 Displayname.Position = UDim2.new(0.025512293, 0, 0, 0)
-Displayname.Size = UDim2.new(0, 47, 0, 50)
+Displayname.Size = UDim2.new(0, 171, 0, 50)
 Displayname.Font = Enum.Font.SourceSans
 Displayname.TextColor3 = Color3.fromRGB(231, 231, 231)
 Displayname.TextSize = 24.000
@@ -140,7 +139,7 @@ Username.Parent = TargetFrame
 Username.BackgroundColor3 = Color3.fromRGB(167, 167, 167)
 Username.BackgroundTransparency = 1.000
 Username.Position = UDim2.new(0.025512293, 0, 0.400000006, 0)
-Username.Size = UDim2.new(0, 58, 0, 19)
+Username.Size = UDim2.new(0, 171, 0, 19)
 Username.Font = Enum.Font.SourceSans
 Username.TextColor3 = Color3.fromRGB(167, 167, 167)
 Username.TextSize = 24.000
@@ -295,7 +294,7 @@ UICorner_15.Parent = CloseSettings
 
 -- Scripts:
 
-local function QKOIWC_fake_script() -- Target.LocalScript 
+local function CYJAJC_fake_script() -- Target.LocalScript 
 	local script = Instance.new('LocalScript', Target)
 
 	-- Define the TextBox, MainFrame, and TargetFrame GUI objects
@@ -310,7 +309,7 @@ local function QKOIWC_fake_script() -- Target.LocalScript
 	-- Function to update the TargetFrame with the specified player's info
 	local function updateTargetFrame(player)
 		-- Update the username label
-		usernameLabel.Text = player.Name
+		usernameLabel.Text = "@" .. player.Name
 	
 		-- Update the display name label
 		displayNameLabel.Text = player.DisplayName or ""
@@ -338,7 +337,7 @@ local function QKOIWC_fake_script() -- Target.LocalScript
 		-- Find the first player with a matching username or display name
 		local player = nil
 		for _, p in pairs(game.Players:GetPlayers()) do
-			if string.sub(string.lower(p.Name), 1, #input) == input or string.sub(string.lower(p.DisplayName or ""), 1, #input) == input then
+			if string.find(string.lower(p.Name), input) or string.find(string.lower(p.DisplayName or ""), input) then
 				player = p
 				break
 			end
@@ -366,7 +365,7 @@ local function QKOIWC_fake_script() -- Target.LocalScript
 		local player = nil
 		-- Find the first player with a matching username or display name
 		for _, p in pairs(game.Players:GetPlayers()) do
-			if string.sub(string.lower(p.Name), 1, #input) == input or string.sub(string.lower(p.DisplayName or ""), 1, #input) == input then
+			if string.find(string.lower(p.Name), input) or string.find(string.lower(p.DisplayName or ""), input) then
 				player = p
 				break
 			end
@@ -376,17 +375,18 @@ local function QKOIWC_fake_script() -- Target.LocalScript
 		end
 	end)
 	
-	-- Hide the TargetFrame when the user clicks away from the TextBox
-	mainFrame.FocusLost:Connect(function()
-		wait(0.1) -- wait a bit to make sure the user isn't clicking on the TargetFrame
-		if not targetFrame:IsMouseOver() then
-			targetFrame.Visible = false
+	-- Hide the TargetFrame when the user clicks outside of the TextBox
+	mainFrame.InputBegan:Connect(function(input, processed)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			if not targetFrame:IsMouseOver() and not textBox:IsMouseOver() then
+				targetFrame.Visible = false
+			end
 		end
 	end)
 	
 end
-coroutine.wrap(QKOIWC_fake_script)()
-local function FYVPCAY_fake_script() -- CheckMark.LocalScript 
+coroutine.wrap(CYJAJC_fake_script)()
+local function VHHTZNN_fake_script() -- CheckMark.LocalScript 
 	local script = Instance.new('LocalScript', CheckMark)
 
 	-- Get the existing ImageButton from the parent
@@ -405,14 +405,14 @@ local function FYVPCAY_fake_script() -- CheckMark.LocalScript
 	end)
 	
 end
-coroutine.wrap(FYVPCAY_fake_script)()
-local function YUFSMK_fake_script() -- EnableAimViewer.LocalScript 
+coroutine.wrap(VHHTZNN_fake_script)()
+local function HPKHGNV_fake_script() -- EnableAimViewer.LocalScript 
 	local script = Instance.new('LocalScript', EnableAimViewer)
 
 	
 end
-coroutine.wrap(YUFSMK_fake_script)()
-local function EXKV_fake_script() -- CheckMark_2.LocalScript 
+coroutine.wrap(HPKHGNV_fake_script)()
+local function EUCEXPO_fake_script() -- CheckMark_2.LocalScript 
 	local script = Instance.new('LocalScript', CheckMark_2)
 
 	-- Get the existing ImageButton from the parent
@@ -428,8 +428,8 @@ local function EXKV_fake_script() -- CheckMark_2.LocalScript
 	end)
 	
 end
-coroutine.wrap(EXKV_fake_script)()
-local function VJNYEF_fake_script() -- MainFrame.Dragging 
+coroutine.wrap(EUCEXPO_fake_script)()
+local function HRCEJIQ_fake_script() -- MainFrame.Dragging 
 	local script = Instance.new('LocalScript', MainFrame)
 
 	local UIS = game:GetService('UserInputService')
@@ -502,8 +502,8 @@ local function VJNYEF_fake_script() -- MainFrame.Dragging
 	
 	end)
 end
-coroutine.wrap(VJNYEF_fake_script)()
-local function FJCS_fake_script() -- SettingsFrame.CloseSettingsButton 
+coroutine.wrap(HRCEJIQ_fake_script)()
+local function JXOKTHA_fake_script() -- SettingsFrame.CloseSettingsButton 
 	local script = Instance.new('LocalScript', SettingsFrame)
 
 	local frame = script.Parent
@@ -513,8 +513,8 @@ local function FJCS_fake_script() -- SettingsFrame.CloseSettingsButton
 		frame.Visible = false
 	end)
 end
-coroutine.wrap(FJCS_fake_script)()
-local function SDBGG_fake_script() -- SettingsButton.OpenSettingsButton 
+coroutine.wrap(JXOKTHA_fake_script)()
+local function LNZAPXL_fake_script() -- SettingsButton.OpenSettingsButton 
 	local script = Instance.new('LocalScript', SettingsButton)
 
 	local button = script.Parent
@@ -526,8 +526,8 @@ local function SDBGG_fake_script() -- SettingsButton.OpenSettingsButton
 		frame.Visible = true
 	end)
 end
-coroutine.wrap(SDBGG_fake_script)()
-local function NAJHAMQ_fake_script() -- MainFrame.CloseKeybindScript 
+coroutine.wrap(LNZAPXL_fake_script)()
+local function EYQZ_fake_script() -- MainFrame.CloseKeybindScript 
 	local script = Instance.new('LocalScript', MainFrame)
 
 	local frame = script.Parent
@@ -545,4 +545,4 @@ local function NAJHAMQ_fake_script() -- MainFrame.CloseKeybindScript
 	game:GetService("UserInputService").InputBegan:Connect(onKeyPressed)
 	
 end
-coroutine.wrap(NAJHAMQ_fake_script)()
+coroutine.wrap(EYQZ_fake_script)()
