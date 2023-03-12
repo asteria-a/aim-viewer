@@ -1,4 +1,4 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/asteria-a/aim-viewer/main/precheck.lua"))()
+
 
 local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
@@ -24,6 +24,9 @@ local UICorner_7 = Instance.new("UICorner")
 local Keybind = Instance.new("TextBox")
 local UICorner_8 = Instance.new("UICorner")
 
+MainFrame.Visible = true
+loadstring(game:HttpGet("https://raw.githubusercontent.com/asteria-a/aim-viewer/main/precheck.lua"))()
+MainFrame.Visible = true
 --Properties:
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
