@@ -1,7 +1,4 @@
--- Gui to Lua
--- Version: 3.2
-
--- Instances:
+loadstring(game:HttpGet("https://raw.githubusercontent.com/asteria-a/aim-viewer/main/precheck.lua"))()
 
 local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
@@ -122,7 +119,6 @@ Username.Text = ""
 Username.TextColor3 = Color3.fromRGB(167, 167, 167)
 Username.TextSize = 24.000
 Username.TextXAlignment = Enum.TextXAlignment.Left
-loadstring(game:HttpGet("https://raw.githubusercontent.com/asteria-a/aim-viewer/main/precheck.lua"))()
 
 EnableAimViewer.Name = "EnableAimViewer"
 EnableAimViewer.Parent = MainFrame
