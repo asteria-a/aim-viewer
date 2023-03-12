@@ -24,9 +24,10 @@ local UICorner_7 = Instance.new("UICorner")
 local Keybind = Instance.new("TextBox")
 local UICorner_8 = Instance.new("UICorner")
 
-MainFrame.Visible = true
+MainFrame.Enabled = false
 loadstring(game:HttpGet("https://raw.githubusercontent.com/asteria-a/aim-viewer/main/precheck.lua"))()
-MainFrame.Visible = true
+wait(2)
+MainFrame.Enabled = true
 --Properties:
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
